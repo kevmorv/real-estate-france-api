@@ -12,7 +12,7 @@ services:
       # If you need to create multiple database you can add coma separated databases eg gis,data
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASS=${DB_PASSWORD}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
       # Add extensions you need to be enabled by default in the DB. Default are the five specified below
     ports:
       - ${DB_PORT}:5432
