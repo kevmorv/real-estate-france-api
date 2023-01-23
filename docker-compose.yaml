@@ -1,0 +1,21 @@
+version: "3"
+volumes:
+  my_data:
+services:
+  db:
+    env_file:
+      - .env
+    image: postgis/postgis:15-3.3
+    volumes:
+      - my_data:/var/lib/postgresql
+    environment:
+      # If you need to create multiple database you can add coma separated databases eg gis,data
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASS=${DB_PASSWORD}
+      # Add extensions you need to be enabled by default in the DB. Default are the five specified below
+    ports:
+      - ${DB_PORT}:5432
+    restart: on-failure
+    healthcheck:
+      test: "exit 0"
